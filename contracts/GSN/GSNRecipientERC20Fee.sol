@@ -16,6 +16,18 @@ import "../token/ERC20/ERC20Detailed.sol";
  * whose only minter is the recipient, so the strategy must be implemented in a derived contract, making use of the
  * internal {_mint} function.
  */
+
+
+ contract UrbanheroToken is Context, ERC20, ERC20Detailed {
+
+    /**
+     * @dev Constructor that gives _msgSender() all of existing tokens.
+     */
+    constructor () public ERC20Detailed("Urbanhero", "UBH", 18) {
+        _mint(_msgSender(), 1000000000 * (10 ** uint256(decimals())));
+    }
+}
+
 contract GSNRecipientERC20Fee is GSNRecipient {
     using SafeERC20 for __unstable__ERC20PrimaryAdmin;
     using SafeMath for uint256;
